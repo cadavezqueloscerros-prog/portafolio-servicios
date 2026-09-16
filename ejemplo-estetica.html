@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Studio Elegancia | Salón de Belleza y Barbería Premium</title>
+<title>La Barbería de Barrio | Doctores, CDMX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -140,6 +140,21 @@
   .price-features svg{color:var(--gold);flex-shrink:0;}
   .price-card .btn{width:100%;justify-content:center;}
 
+  /* UBICACION */
+  .location-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch;}
+  .map-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid rgba(212,175,55,.15);min-height:420px;filter:grayscale(.15) contrast(1.05);}
+  .map-card iframe{width:100%;height:100%;min-height:420px;border:0;display:block;}
+  .reviews-card{background:var(--panel);border:1px solid rgba(212,175,55,.15);border-radius:var(--radius);padding:2.4rem;display:flex;flex-direction:column;gap:1.6rem;}
+  .presence-row{display:flex;gap:.8rem;flex-wrap:wrap;}
+  .presence-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);color:var(--gold-light);padding:.5rem 1rem;border-radius:50px;font-size:.85rem;font-weight:600;}
+  .review-highlight{background:#0F0D0B;border-radius:12px;padding:1.3rem 1.5rem;border-left:4px solid var(--gold);}
+  .review-highlight p{font-size:.94rem;color:#EDE8E0;}
+  .review-highlight span{display:block;margin-top:.5rem;font-size:.8rem;color:var(--muted);}
+  .addr-list{list-style:none;display:grid;gap:.8rem;margin-top:.4rem;}
+  .addr-list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:#EDE8E0;}
+  .addr-list svg{color:var(--gold-light);flex-shrink:0;margin-top:.15rem;}
+  .gmaps-link{display:inline-flex;align-items:center;gap:8px;color:var(--gold-light);font-weight:600;text-decoration:none;font-size:.92rem;}
+
   /* CTA BANNER */
   .cta-banner{position:relative;padding:6rem 0;overflow:hidden;}
   .cta-bg{position:absolute;inset:0;background-image:linear-gradient(120deg, rgba(10,8,6,.94), rgba(26,22,19,.85)), url('https://images.unsplash.com/photo-1536520002442-39764a41e987?fm=jpg&q=80&w=1800&auto=format&fit=crop');background-size:cover;background-position:center;}
@@ -168,7 +183,9 @@
   @keyframes pulse{0%{box-shadow:0 10px 30px rgba(37,211,102,.5);}50%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 12px rgba(37,211,102,.12);}100%{box-shadow:0 10px 30px rgba(37,211,102,.5);}}
 
   @media (max-width:980px){
-    .about-grid,.services-grid,.testimonials-grid,.pricing{grid-template-columns:1fr;}
+    .about-grid,.services-grid,.testimonials-grid,.pricing,.location-wrap{grid-template-columns:1fr;}
+    .map-card{min-height:300px;}
+    .map-card iframe{min-height:300px;}
     .stats-inner{grid-template-columns:repeat(2,1fr);}
     .stat{border-right:none;border-bottom:1px solid rgba(212,175,55,.1);}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -199,10 +216,11 @@
 
 <header id="header">
   <nav>
-    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-sparkle"/></svg></div>Studio Elegancia</div>
+    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-sparkle"/></svg></div>La Barbería de Barrio</div>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#galeria">Galería</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
       <li><a href="#precios">Precios</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
     </ul>
@@ -215,16 +233,16 @@
   <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-content">
-      <span class="eyebrow">Salón & Barbería Premium</span>
+      <span class="eyebrow">Barbería de Barrio · Col. Doctores, CDMX</span>
       <h1>Tu transformación <em>comienza aquí</em></h1>
-      <p>Estilo, precisión y una experiencia de lujo en cada visita. Donde el arte del cuidado personal se convierte en confianza.</p>
+      <p>Estilo, precisión y una experiencia de barrio con trato cercano. Donde el arte del corte clásico se convierte en confianza.</p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary"><svg class="icon"><use href="#ic-calendar"/></svg> Reservar Cita</a>
-        <a href="tel:+34987654321" class="btn btn-ghost"><svg class="icon"><use href="#ic-phone"/></svg> +34 987 654 321</a>
+        <a href="https://wa.me/525516209949" class="btn btn-primary"><svg class="icon"><use href="#ic-calendar"/></svg> Reservar Cita</a>
+        <a href="tel:+525516209949" class="btn btn-ghost"><svg class="icon"><use href="#ic-phone"/></svg> +52 55 1620 9949</a>
       </div>
       <div class="trust-row">
-        <div class="trust-item"><span class="trust-stars">★★★★★</span> 4.9/5 (480 reseñas)</div>
-        <div class="trust-item">10+ años creando estilo</div>
+        <div class="trust-item">📍 Eje Central Lázaro Cárdenas 191</div>
+        <div class="trust-item">Reservas por Facebook y Fresha</div>
       </div>
     </div>
   </div>
@@ -242,12 +260,12 @@
 <section id="nosotros">
   <div class="container about-grid">
     <div class="about-media reveal">
-      <img src="https://images.unsplash.com/photo-1613754773306-532ec48b0de5?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior del salón Studio Elegancia">
+      <img src="https://images.unsplash.com/photo-1613754773306-532ec48b0de5?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior de La Barbería de Barrio">
     </div>
     <div class="about-text reveal">
       <span class="kicker">Nuestra Historia</span>
       <h2>Una década perfeccionando el arte del estilo</h2>
-      <p>En Studio Elegancia fusionamos técnica depurada, productos premium y un ambiente sofisticado para que cada visita se sienta como una experiencia exclusiva, no solo un servicio.</p>
+      <p>En La Barbería de Barrio fusionamos técnica depurada, buenos productos y un ambiente cercano para que cada visita se sienta como una experiencia de barrio, hecha con cuidado.</p>
       <ul class="check-list">
         <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Estilistas certificados internacionalmente</li>
         <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Productos y coloración de alta gama</li>
@@ -420,15 +438,46 @@
   </div>
 </section>
 
+<section id="ubicacion">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Ubicación</span>
+      <h2>Encuéntranos en el corazón de Doctores</h2>
+      <p>Sobre Eje Central, a pasos del Metro y accesible desde toda la Cuauhtémoc.</p>
+    </div>
+    <div class="location-wrap reveal">
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps?q=Eje+Central+L%C3%A1zaro+C%C3%A1rdenas+191,+Doctores,+Cuauht%C3%A9moc,+CDMX&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de La Barbería de Barrio"></iframe>
+      </div>
+      <div class="reviews-card">
+        <div class="presence-row">
+          <span class="presence-badge"><svg class="icon"><use href="#ic-fb"/></svg> Activos en Facebook</span>
+          <span class="presence-badge"><svg class="icon"><use href="#ic-calendar"/></svg> Reservas por Fresha</span>
+        </div>
+        <div class="review-highlight">
+          <p>"Un clásico del barrio: corte de cabello, arreglo de barba, afeitado con toalla caliente y rasurado de cabeza, con la calidez de una barbería de confianza."</p>
+          <span>— Perfil de negocio verificado en Google Maps</span>
+        </div>
+        <ul class="addr-list">
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Eje Central Lázaro Cárdenas 191, Local 1, Doctores, Cuauhtémoc, CDMX</li>
+          <li><svg class="icon"><use href="#ic-phone"/></svg> +52 55 1620 9949</li>
+          <li><svg class="icon"><use href="#ic-crown"/></svg> Lun–Vie 11:00–21:00 · Sáb–Dom cerrado</li>
+        </ul>
+        <a href="https://www.google.com/maps?q=Eje+Central+L%C3%A1zaro+C%C3%A1rdenas+191,+Doctores,+Cuauht%C3%A9moc,+CDMX" target="_blank" rel="noopener" class="gmaps-link">Ver en Google Maps <svg class="icon"><use href="#ic-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-banner" id="contacto">
   <div class="cta-bg"></div>
   <div class="container">
     <div class="cta-inner reveal">
       <h2>¿Lista para tu transformación?</h2>
-      <p>Reserva tu cita hoy y vive la experiencia Studio Elegancia.</p>
+      <p>Reserva tu cita hoy y vive la experiencia La Barbería de Barrio.</p>
       <div class="cta-actions">
-        <a href="tel:+34987654321" class="btn btn-primary"><svg class="icon"><use href="#ic-phone"/></svg> Llamar Ahora</a>
-        <a href="https://wa.me/34987654321" class="btn btn-ghost"><svg class="icon"><use href="#ic-wa"/></svg> WhatsApp</a>
+        <a href="tel:+525516209949" class="btn btn-primary"><svg class="icon"><use href="#ic-phone"/></svg> Llamar Ahora</a>
+        <a href="https://wa.me/525516209949" class="btn btn-ghost"><svg class="icon"><use href="#ic-wa"/></svg> WhatsApp</a>
       </div>
     </div>
   </div>
@@ -438,12 +487,12 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-sparkle"/></svg></div>Studio Elegancia</div>
-        <p>Belleza, estilo y confianza en cada servicio. Tu experiencia de lujo desde 2016.</p>
+        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-sparkle"/></svg></div>La Barbería de Barrio</div>
+        <p>Estilo, precisión y trato cercano en cada visita. La barbería de confianza de la Doctores.</p>
         <div class="social-row">
           <a href="#"><svg class="icon"><use href="#ic-fb"/></svg></a>
           <a href="#"><svg class="icon"><use href="#ic-ig"/></svg></a>
-          <a href="https://wa.me/34987654321"><svg class="icon"><use href="#ic-wa"/></svg></a>
+          <a href="https://wa.me/525516209949"><svg class="icon"><use href="#ic-wa"/></svg></a>
         </div>
       </div>
       <div>
@@ -451,6 +500,7 @@
         <ul>
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#galeria">Galería</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="#precios">Precios</a></li>
           <li><a href="#testimonios">Testimonios</a></li>
         </ul>
@@ -458,25 +508,25 @@
       <div>
         <h4>Horarios</h4>
         <ul>
-          <li>Lun - Vie: 10:00 - 21:00</li>
-          <li>Sábado: 9:00 - 20:00</li>
-          <li>Domingo: 11:00 - 17:00</li>
+          <li>Lun - Vie: 11:00 - 21:00</li>
+          <li>Sábado: Cerrado</li>
+          <li>Domingo: Cerrado</li>
         </ul>
       </div>
       <div>
         <h4>Contacto</h4>
         <ul class="footer-contact">
-          <li><svg class="icon"><use href="#ic-pin"/></svg> Calle Belleza 456, Barcelona</li>
-          <li><svg class="icon"><use href="#ic-phone"/></svg> +34 987 654 321</li>
-          <li><svg class="icon"><use href="#ic-mail"/></svg> contacto@studioelegancia.com</li>
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Eje Central Lázaro Cárdenas 191, Doctores, CDMX</li>
+          <li><svg class="icon"><use href="#ic-phone"/></svg> +52 55 1620 9949</li>
+          <li><svg class="icon"><use href="#ic-mail"/></svg> contacto@barberiadebarrio.mx</li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 Studio Elegancia · Donde la belleza es un arte</div>
+    <div class="footer-bottom">© 2026 La Barbería de Barrio · Estilo de confianza en la Doctores</div>
   </div>
 </footer>
 
-<a href="https://wa.me/34987654321" class="wa-fab" aria-label="WhatsApp"><svg class="icon" style="width:28px;height:28px"><use href="#ic-wa"/></svg></a>
+<a href="https://wa.me/525516209949" class="wa-fab" aria-label="WhatsApp"><svg class="icon" style="width:28px;height:28px"><use href="#ic-wa"/></svg></a>
 
 <script>
   const header = document.getElementById('header');
