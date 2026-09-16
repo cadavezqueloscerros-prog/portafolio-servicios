@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PetCare Veterinaria | Clínica Veterinaria de Confianza</title>
+<title>Clínica Veterinaria Veterinacho | Portales Norte, CDMX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -133,6 +133,25 @@
   .t-author strong{display:block;font-size:.92rem;}
   .t-author span{font-size:.8rem;color:var(--muted);}
 
+  /* UBICACION */
+  .location-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch;}
+  .map-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(14,42,32,.08);min-height:420px;}
+  .map-card iframe{width:100%;height:100%;min-height:420px;border:0;display:block;}
+  .reviews-card{background:var(--bg-soft);border-radius:var(--radius);padding:2.4rem;display:flex;flex-direction:column;gap:1.6rem;}
+  .rating-row{display:flex;align-items:center;gap:1.2rem;}
+  .rating-badge{background:#fff;border-radius:14px;padding:1rem 1.3rem;text-align:center;box-shadow:var(--shadow-sm);min-width:88px;}
+  .rating-badge .num{font-family:'Poppins',sans-serif;font-weight:800;font-size:1.8rem;color:var(--primary-dark);}
+  .rating-badge .stars{color:var(--accent);font-size:.9rem;}
+  .rating-meta strong{display:block;font-size:1.05rem;}
+  .rating-meta span{color:var(--muted);font-size:.88rem;}
+  .review-highlight{background:#fff;border-radius:12px;padding:1.3rem 1.5rem;border-left:4px solid var(--primary);}
+  .review-highlight p{font-size:.94rem;color:var(--ink);}
+  .review-highlight span{display:block;margin-top:.5rem;font-size:.8rem;color:var(--muted);}
+  .addr-list{list-style:none;display:grid;gap:.8rem;margin-top:.4rem;}
+  .addr-list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:var(--ink);}
+  .addr-list svg{color:var(--primary);flex-shrink:0;margin-top:.15rem;}
+  .gmaps-link{display:inline-flex;align-items:center;gap:8px;color:var(--primary-dark);font-weight:600;text-decoration:none;font-size:.92rem;}
+
   /* CTA BANNER */
   .cta-banner{position:relative;padding:5.5rem 0;overflow:hidden;}
   .cta-bg{position:absolute;inset:0;background-image:linear-gradient(120deg, rgba(10,40,28,.92), rgba(18,92,56,.85)), url('https://images.unsplash.com/photo-1551076805-e1869033e561?fm=jpg&q=80&w=1800&auto=format&fit=crop');background-size:cover;background-position:center;}
@@ -162,7 +181,9 @@
   @keyframes pulse{0%{box-shadow:0 10px 30px rgba(37,211,102,.5);}50%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 12px rgba(37,211,102,.12);}100%{box-shadow:0 10px 30px rgba(37,211,102,.5);}}
 
   @media (max-width:980px){
-    .about-grid,.services-grid,.team-grid,.testimonials-grid{grid-template-columns:1fr;}
+    .about-grid,.services-grid,.team-grid,.testimonials-grid,.location-wrap{grid-template-columns:1fr;}
+    .map-card{min-height:300px;}
+    .map-card iframe{min-height:300px;}
     .stats-inner{grid-template-columns:repeat(2,1fr);}
     .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -194,11 +215,12 @@
 
 <header id="header">
   <nav>
-    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-paw"/></svg></div>PetCare Veterinaria</div>
+    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-paw"/></svg></div>Veterinacho</div>
     <ul class="nav-links">
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#equipo">Equipo</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
     </ul>
     <a href="#contacto" class="nav-cta">Agendar Cita</a>
@@ -210,16 +232,16 @@
   <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-content">
-      <span class="eyebrow"><span class="dot"></span> Abierto ahora · Urgencias 24/7</span>
+      <span class="eyebrow"><span class="dot"></span> Col. Portales Norte · Benito Juárez, CDMX</span>
       <h1>El mejor cuidado para <span>tu mejor amigo</span></h1>
       <p>Medicina veterinaria integral con tecnología de punta, atención cálida y un equipo que trata a tu mascota como familia.</p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary"><svg class="icon"><use href="#ic-calendar"/></svg> Agendar Cita</a>
-        <a href="tel:+341234567" class="btn btn-ghost"><svg class="icon"><use href="#ic-phone"/></svg> +34 123 45 67 89</a>
+        <a href="https://wa.me/525590395345" class="btn btn-primary"><svg class="icon"><use href="#ic-calendar"/></svg> Agendar Cita</a>
+        <a href="tel:+525590395345" class="btn btn-ghost"><svg class="icon"><use href="#ic-phone"/></svg> +52 55 9039 5345</a>
       </div>
       <div class="trust-row">
-        <div class="trust-item"><span class="trust-stars">★★★★★</span> 4.9/5 (320 reseñas)</div>
-        <div class="trust-item"><span class="trust-num">15+</span> años de experiencia</div>
+        <div class="trust-item"><span class="trust-stars">★★★★★</span> 4.9/5 (59 reseñas de Google)</div>
+        <div class="trust-item"><span class="trust-num">100%</span> atención personalizada</div>
       </div>
     </div>
   </div>
@@ -391,6 +413,43 @@
   </div>
 </section>
 
+<section id="ubicacion" style="background:var(--bg-soft)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Ubicación</span>
+      <h2>Fácil de encontrar, fácil de visitar</h2>
+      <p>Estamos en el corazón de Portales Norte, a unos minutos de Eje Central.</p>
+    </div>
+    <div class="location-wrap reveal">
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps?q=Miguel+Laurent+1425,+Portales+Norte,+Benito+Ju%C3%A1rez,+CDMX&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Veterinacho"></iframe>
+      </div>
+      <div class="reviews-card">
+        <div class="rating-row">
+          <div class="rating-badge">
+            <div class="num">4.9</div>
+            <div class="stars">★★★★★</div>
+          </div>
+          <div class="rating-meta">
+            <strong>Reseñas de Google</strong>
+            <span>59 reseñas · Excelente</span>
+          </div>
+        </div>
+        <div class="review-highlight">
+          <p>"Los dueños destacan la atención personalizada y cálida que reciben sus mascotas, y que el trato se adapta a las necesidades específicas de cada animal."</p>
+          <span>— Resumen de reseñas verificadas en Google Maps</span>
+        </div>
+        <ul class="addr-list">
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Miguel Laurent 1425, Col. Portales Norte, Benito Juárez, CDMX</li>
+          <li><svg class="icon"><use href="#ic-phone"/></svg> +52 55 9039 5345</li>
+          <li><svg class="icon"><use href="#ic-clock"/></svg> Lun–Vie 10:30–19:30 · Sáb 10:30–18:00 · Dom cerrado</li>
+        </ul>
+        <a href="https://www.google.com/maps?q=Miguel+Laurent+1425,+Portales+Norte,+Benito+Ju%C3%A1rez,+CDMX" target="_blank" rel="noopener" class="gmaps-link">Ver en Google Maps <svg class="icon"><use href="#ic-arrow"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="cta-banner" id="contacto">
   <div class="cta-bg"></div>
   <div class="container">
@@ -398,8 +457,8 @@
       <h2>¿Tu mascota necesita atención?</h2>
       <p>Agenda tu cita hoy mismo y déjanos cuidar a tu compañero como se merece.</p>
       <div class="cta-actions">
-        <a href="tel:+341234567" class="btn btn-primary"><svg class="icon"><use href="#ic-phone"/></svg> Llamar Ahora</a>
-        <a href="https://wa.me/341234567" class="btn btn-ghost"><svg class="icon"><use href="#ic-wa"/></svg> WhatsApp</a>
+        <a href="tel:+525590395345" class="btn btn-primary"><svg class="icon"><use href="#ic-phone"/></svg> Llamar Ahora</a>
+        <a href="https://wa.me/525590395345" class="btn btn-ghost"><svg class="icon"><use href="#ic-wa"/></svg> WhatsApp</a>
       </div>
     </div>
   </div>
@@ -409,12 +468,12 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-paw"/></svg></div>PetCare</div>
-        <p>Cuidado veterinario integral con calidez humana desde 2011. Tu mascota está en las mejores manos.</p>
+        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-paw"/></svg></div>Veterinacho</div>
+        <p>Cuidado veterinario integral con calidez humana. Tu mascota está en las mejores manos, en Portales Norte.</p>
         <div class="social-row">
           <a href="#"><svg class="icon"><use href="#ic-fb"/></svg></a>
           <a href="#"><svg class="icon"><use href="#ic-ig"/></svg></a>
-          <a href="https://wa.me/341234567"><svg class="icon"><use href="#ic-wa"/></svg></a>
+          <a href="https://wa.me/525590395345"><svg class="icon"><use href="#ic-wa"/></svg></a>
         </div>
       </div>
       <div>
@@ -423,31 +482,32 @@
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#nosotros">Nosotros</a></li>
           <li><a href="#equipo">Equipo</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="#testimonios">Testimonios</a></li>
         </ul>
       </div>
       <div>
         <h4>Horarios</h4>
         <ul>
-          <li>Lun - Vie: 9:00 - 20:00</li>
-          <li>Sábado: 10:00 - 18:00</li>
-          <li>Domingo: Urgencias</li>
+          <li>Lun - Vie: 10:30 - 19:30</li>
+          <li>Sábado: 10:30 - 18:00</li>
+          <li>Domingo: Cerrado</li>
         </ul>
       </div>
       <div>
         <h4>Contacto</h4>
         <ul class="footer-contact">
-          <li><svg class="icon"><use href="#ic-pin"/></svg> Calle Principal 123, Madrid</li>
-          <li><svg class="icon"><use href="#ic-phone"/></svg> +34 123 456 789</li>
-          <li><svg class="icon"><use href="#ic-mail"/></svg> contacto@petcare.com</li>
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Miguel Laurent 1425, Portales Norte, CDMX</li>
+          <li><svg class="icon"><use href="#ic-phone"/></svg> +52 55 9039 5345</li>
+          <li><svg class="icon"><use href="#ic-mail"/></svg> contacto@veterinacho.mx</li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 PetCare Veterinaria · Todos los derechos reservados</div>
+    <div class="footer-bottom">© 2026 Veterinacho · Todos los derechos reservados</div>
   </div>
 </footer>
 
-<a href="https://wa.me/341234567" class="wa-fab" aria-label="WhatsApp"><svg class="icon" style="width:28px;height:28px"><use href="#ic-wa"/></svg></a>
+<a href="https://wa.me/525590395345" class="wa-fab" aria-label="WhatsApp"><svg class="icon" style="width:28px;height:28px"><use href="#ic-wa"/></svg></a>
 
 <script>
   const header = document.getElementById('header');
