@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabor & Aroma | Restaurante de Cocina Premium</title>
+<title>Fonda La Talavera | Coyoacán, CDMX</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -131,6 +131,25 @@
   .hours-section .kicker{color:var(--copper-light);}
   .hours-section h2{color:#fff;}
 
+  /* UBICACION */
+  .location-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:stretch;margin-top:2.2rem;}
+  .map-card{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid rgba(44,24,16,.08);min-height:420px;}
+  .map-card iframe{width:100%;height:100%;min-height:420px;border:0;display:block;}
+  .reviews-card{background:#fff;border-radius:var(--radius);padding:2.4rem;display:flex;flex-direction:column;gap:1.6rem;box-shadow:var(--shadow-md);border:1px solid rgba(44,24,16,.06);}
+  .rating-row{display:flex;align-items:center;gap:1.2rem;}
+  .rating-badge{background:var(--cream);border-radius:14px;padding:1rem 1.3rem;text-align:center;min-width:88px;}
+  .rating-badge .num{font-family:'Playfair Display',serif;font-weight:800;font-size:1.8rem;color:var(--brown);}
+  .rating-badge .stars{color:var(--copper);font-size:.9rem;}
+  .rating-meta strong{display:block;font-size:1.05rem;color:var(--brown);}
+  .rating-meta span{color:var(--muted);font-size:.88rem;}
+  .review-highlight{background:var(--cream);border-radius:12px;padding:1.3rem 1.5rem;border-left:4px solid var(--copper);}
+  .review-highlight p{font-size:.94rem;color:var(--ink);}
+  .review-highlight span{display:block;margin-top:.5rem;font-size:.8rem;color:var(--muted);}
+  .addr-list{list-style:none;display:grid;gap:.8rem;margin-top:.4rem;}
+  .addr-list li{display:flex;align-items:flex-start;gap:10px;font-size:.94rem;color:var(--ink);}
+  .addr-list svg{color:var(--copper);flex-shrink:0;margin-top:.15rem;}
+  .gmaps-link{display:inline-flex;align-items:center;gap:8px;color:var(--brown);font-weight:600;text-decoration:none;font-size:.92rem;}
+
   /* TESTIMONIALS */
   .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
   .t-card{background:#fff;border-radius:var(--radius);padding:2.1rem;box-shadow:var(--shadow-md);border:1px solid rgba(44,24,16,.06);position:relative;}
@@ -170,7 +189,9 @@
   @keyframes pulse{0%{box-shadow:0 10px 30px rgba(37,211,102,.5);}50%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 12px rgba(37,211,102,.12);}100%{box-shadow:0 10px 30px rgba(37,211,102,.5);}}
 
   @media (max-width:980px){
-    .about-grid,.menu-grid,.testimonials-grid{grid-template-columns:1fr;}
+    .about-grid,.menu-grid,.testimonials-grid,.location-wrap{grid-template-columns:1fr;}
+    .map-card{min-height:300px;}
+    .map-card iframe{min-height:300px;}
     .stats-inner{grid-template-columns:repeat(2,1fr);}
     .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
     .footer-grid{grid-template-columns:1fr 1fr;}
@@ -197,6 +218,7 @@
   <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></symbol>
   <symbol id="ic-chef" viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></symbol>
   <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ic-arrow" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
   <symbol id="ic-wa" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.6 6.3A8.4 8.4 0 0 0 3.6 16.3L2 22l5.8-1.5A8.4 8.4 0 1 0 17.6 6.3ZM12 19.4a7 7 0 0 1-3.6-1l-.3-.2-2.7.7.7-2.6-.2-.3a7 7 0 1 1 6.1 3.4Zm3.9-5.2c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1s-.6.7-.7.8-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4s-.5-1.2-.7-1.6-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 0 0-.6 1.4c0 .8.6 1.6.7 1.8.1.1 1.2 1.9 3 2.6 1.7.7 1.7.5 2 .4a1.7 1.7 0 0 0 1.1-.8c.1-.3.1-.5.1-.6s-.2-.1-.4-.2Z"/></symbol>
   <symbol id="ic-fb" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13.5 21v-7.6h2.6l.4-3H13.5V8.3c0-.9.2-1.5 1.5-1.5h1.6V4.1C16.3 4 15.3 4 14.2 4c-2.4 0-4 1.5-4 4.1v2.3H7.6v3h2.6V21Z"/></symbol>
   <symbol id="ic-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></symbol>
@@ -204,14 +226,14 @@
 
 <header id="header">
   <nav>
-    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-fork"/></svg></div>Sabor & Aroma</div>
+    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-fork"/></svg></div>Fonda La Talavera</div>
     <ul class="nav-links">
       <li><a href="#menu">Menú</a></li>
       <li><a href="#galeria">Galería</a></li>
-      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#ubicacion">Ubicación</a></li>
       <li><a href="#testimonios">Testimonios</a></li>
     </ul>
-    <a href="#contacto" class="nav-cta">Reservar Mesa</a>
+    <a href="#contacto" class="nav-cta">Cómo Llegar</a>
     <button class="burger">☰</button>
   </nav>
 </header>
@@ -220,16 +242,16 @@
   <div class="hero-bg"></div>
   <div class="container">
     <div class="hero-content">
-      <span class="eyebrow">Cocina de Autor</span>
-      <h1>Una experiencia <em>gastronómica</em> inolvidable</h1>
-      <p>Sabores auténticos, ingredientes de temporada y una atmósfera pensada para momentos que se recuerdan.</p>
+      <span class="eyebrow">Fonda Tradicional · Col. Del Carmen, Coyoacán</span>
+      <h1>Cocina mexicana <em>de barrio</em>, con sazón de siempre</h1>
+      <p>Comida corrida casera, platillos tradicionales y el sabor auténtico de una fonda familiar a dos cuadras del Museo Frida Kahlo.</p>
       <div class="hero-actions">
-        <a href="#contacto" class="btn btn-primary"><svg class="icon"><use href="#ic-calendar"/></svg> Reservar Mesa</a>
-        <a href="tel:+34912345678" class="btn btn-ghost"><svg class="icon"><use href="#ic-phone"/></svg> +34 912 345 678</a>
+        <a href="#ubicacion" class="btn btn-primary"><svg class="icon"><use href="#ic-pin"/></svg> Cómo Llegar</a>
+        <a href="#menu" class="btn btn-ghost"><svg class="icon"><use href="#ic-fork"/></svg> Ver Menú</a>
       </div>
       <div class="trust-row">
-        <div class="trust-item"><span class="trust-stars">★★★★★</span> 4.8/5 (610 reseñas)</div>
-        <div class="trust-item">Cocina de autor desde 2014</div>
+        <div class="trust-item"><span class="trust-stars">★★★★</span> 3.8/5 en TripAdvisor</div>
+        <div class="trust-item">Fonda familiar desde 2010</div>
       </div>
     </div>
   </div>
@@ -237,31 +259,31 @@
 
 <div class="stats">
   <div class="stats-inner">
-    <div class="stat"><div class="stat-num">50,000+</div><div class="stat-label">Comensales al año</div></div>
-    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Años de trayectoria</div></div>
-    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Platos de autor</div></div>
-    <div class="stat"><div class="stat-num">4.8</div><div class="stat-label">Calificación promedio</div></div>
+    <div class="stat"><div class="stat-num">15+</div><div class="stat-label">Años en el barrio</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Tiempos en la comida corrida</div></div>
+    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Cocina casera tradicional</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Cuadras del Museo Frida Kahlo</div></div>
   </div>
 </div>
 
 <section class="about" id="nosotros">
   <div class="container about-grid">
     <div class="about-media reveal">
-      <img src="https://images.unsplash.com/photo-1560130934-590b85fc08e7?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior del restaurante Sabor & Aroma">
+      <img src="https://images.unsplash.com/photo-1560130934-590b85fc08e7?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior de Fonda La Talavera">
       <div class="about-badge">
         <div class="icon-wrap"><svg class="icon"><use href="#ic-chef"/></svg></div>
-        <div><strong>Chef Ejecutivo</strong><span>15 años de trayectoria</span></div>
+        <div><strong>Cocina Familiar</strong><span>Recetas de generación en generación</span></div>
       </div>
     </div>
     <div class="about-text reveal">
       <span class="kicker">Nuestra Cocina</span>
-      <h2>Ingredientes de temporada, técnica de autor</h2>
-      <p>En Sabor & Aroma creemos que cada plato debe contar una historia. Trabajamos con productores locales y técnicas de vanguardia para ofrecerte una experiencia gastronómica auténtica en cada visita.</p>
+      <h2>El sabor de una fonda de barrio, hecha con cariño</h2>
+      <p>En Fonda La Talavera creemos en la cocina mexicana de siempre: guisos caseros, buen precio y ese trato cercano que solo se encuentra en los negocios familiares de Coyoacán.</p>
       <ul class="check-list">
-        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Ingredientes frescos de productores locales</li>
-        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Carta de vinos seleccionada por sommelier</li>
-        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Ambiente elegante para toda ocasión</li>
-        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Menús personalizados para eventos privados</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Comida corrida de tres tiempos, día a día</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Platillos tradicionales: pozole, mole, chiles en nogada</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Opciones vegetarianas disponibles</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> A dos cuadras del Museo Frida Kahlo</li>
       </ul>
     </div>
   </div>
@@ -271,50 +293,50 @@
   <div class="container">
     <div class="section-head reveal">
       <span class="kicker">Nuestro Menú</span>
-      <h2>Platos pensados para sorprender</h2>
-      <p>Una selección de nuestras especialidades, elaboradas con ingredientes de la más alta calidad.</p>
+      <h2>Sabores de siempre, hechos al momento</h2>
+      <p>Una selección de nuestros platillos favoritos, preparados con recetas familiares y buenos ingredientes.</p>
     </div>
     <div class="menu-grid">
       <div class="menu-card reveal">
-        <div class="menu-media"><img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Ensaladas gourmet"></div>
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Comida corrida"></div>
         <div class="menu-body">
-          <div class="row"><h3>Ensaladas Gourmet</h3><span class="menu-price">$18–24</span></div>
-          <p>Combinaciones frescas con ingredientes seleccionados y aderezos de autor.</p>
+          <div class="row"><h3>Comida Corrida</h3><span class="menu-price">$75–90</span></div>
+          <p>Sopa, guisado del día, arroz y agua fresca, como en casa.</p>
         </div>
       </div>
       <div class="menu-card reveal">
-        <div class="menu-media"><img src="https://images.unsplash.com/photo-1600663791817-d74f5196ba29?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Carnes premium"></div>
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1600663791817-d74f5196ba29?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Pozole tradicional"></div>
         <div class="menu-body">
-          <div class="row"><h3>Carnes Premium</h3><span class="menu-price">$32–45</span></div>
-          <p>Cortes seleccionados cocinados a la perfección con técnicas tradicionales.</p>
+          <div class="row"><h3>Pozole</h3><span class="menu-price">$85</span></div>
+          <p>Blanco o rojo, servido con todos sus acompañamientos.</p>
         </div>
       </div>
       <div class="menu-card reveal">
-        <div class="menu-media"><img src="https://images.unsplash.com/photo-1499715217757-2aa48ed7e593?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Pescados del día"></div>
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1499715217757-2aa48ed7e593?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Mole poblano"></div>
         <div class="menu-body">
-          <div class="row"><h3>Pescados del Día</h3><span class="menu-price">$28–38</span></div>
-          <p>Mariscos y pescados frescos con hierbas aromáticas y cítricos.</p>
+          <div class="row"><h3>Mole Poblano</h3><span class="menu-price">$95</span></div>
+          <p>Receta familiar, servido con arroz y tortillas hechas a mano.</p>
         </div>
       </div>
       <div class="menu-card reveal">
-        <div class="menu-media"><img src="https://images.unsplash.com/photo-1621494268492-d01b98eba7e4?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Pastas artesanales"></div>
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1621494268492-d01b98eba7e4?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Antojitos mexicanos"></div>
         <div class="menu-body">
-          <div class="row"><h3>Pastas Artesanales</h3><span class="menu-price">$22–32</span></div>
-          <p>Pastas hechas en casa con salsas de temporada e ingredientes premium.</p>
+          <div class="row"><h3>Antojitos Mexicanos</h3><span class="menu-price">$15–35</span></div>
+          <p>Tacos, quesadillas y sopes preparados al momento.</p>
         </div>
       </div>
       <div class="menu-card reveal">
-        <div class="menu-media"><img src="https://images.unsplash.com/photo-1657566648148-061dc760eca6?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Entrantes de autor"></div>
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1657566648148-061dc760eca6?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Chiles en nogada"></div>
         <div class="menu-body">
-          <div class="row"><h3>Entrantes de Autor</h3><span class="menu-price">$16–26</span></div>
-          <p>Creaciones originales para despertar el paladar antes del plato fuerte.</p>
+          <div class="row"><h3>Chiles en Nogada</h3><span class="menu-price">$120</span></div>
+          <p>Disponibles en temporada, receta tradicional poblana.</p>
         </div>
       </div>
       <div class="menu-card reveal">
         <div class="menu-media"><img src="https://images.unsplash.com/photo-1519233991914-26a44330ccd7?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Postres caseros"></div>
         <div class="menu-body">
-          <div class="row"><h3>Postres Caseros</h3><span class="menu-price">$12–18</span></div>
-          <p>Dulces elaborados diariamente por nuestro chef pastelero exclusivo.</p>
+          <div class="row"><h3>Postres Caseros</h3><span class="menu-price">$35–45</span></div>
+          <p>Flan, arroz con leche y pay casero, hechos cada día.</p>
         </div>
       </div>
     </div>
@@ -344,10 +366,10 @@
       <span class="kicker">Horarios</span>
       <h2>¿Cuándo visitarnos?</h2>
       <div class="hours-grid">
-        <div class="hour-item"><h4>Lunes a Jueves</h4><p>13:00 – 16:00</p><p>19:00 – 23:00</p></div>
-        <div class="hour-item"><h4>Viernes y Sábado</h4><p>13:00 – 16:00</p><p>19:00 – 23:30</p></div>
-        <div class="hour-item"><h4>Domingo</h4><p>13:00 – 16:00</p><p>Cerrado por la noche</p></div>
-        <div class="hour-item"><h4>Festivos</h4><p>13:00 – 22:00</p><p>Consultar disponibilidad</p></div>
+        <div class="hour-item"><h4>Comida Corrida</h4><p>Lunes a sábado</p><p>Horario de mediodía</p></div>
+        <div class="hour-item"><h4>A la Carta</h4><p>Platillos tradicionales</p><p>Todo el día</p></div>
+        <div class="hour-item"><h4>Domingo</h4><p>Consultar disponibilidad</p><p>en Google Maps</p></div>
+        <div class="hour-item"><h4>Horario Exacto</h4><p>Verifica el horario</p><p>actualizado en el mapa ↓</p></div>
       </div>
     </div>
   </div>
@@ -363,20 +385,56 @@
       <div class="t-card reveal">
         <div class="t-quote">"</div>
         <div class="t-stars">★★★★★</div>
-        <p>Una experiencia culinaria excepcional. La comida estaba exquisita y el servicio impecable. Volveremos sin duda.</p>
-        <div class="t-author"><div class="t-avatar">CM</div><div><strong>Carlos Martínez</strong><span>Comensal frecuente</span></div></div>
+        <p>La comida corrida siempre está buenísima y a buen precio. Vengo casi toda la semana, es como comer en casa de mi abuela.</p>
+        <div class="t-author"><div class="t-avatar">CM</div><div><strong>Carlos Martínez</strong><span>Cliente habitual</span></div></div>
       </div>
       <div class="t-card reveal">
         <div class="t-quote">"</div>
         <div class="t-stars">★★★★★</div>
-        <p>El mejor restaurante de la ciudad. Cada plato es una obra de arte. Recomiendo reservar con anticipación.</p>
-        <div class="t-author"><div class="t-avatar">IG</div><div><strong>Isabel García</strong><span>Comensal frecuente</span></div></div>
+        <p>El mole y el pozole son de los mejores que he probado en la colonia. Precio justo y trato muy amable.</p>
+        <div class="t-author"><div class="t-avatar">IG</div><div><strong>Isabel García</strong><span>Clienta habitual</span></div></div>
       </div>
       <div class="t-card reveal">
         <div class="t-quote">"</div>
         <div class="t-stars">★★★★★</div>
-        <p>Ambiente elegante, comida de calidad premium y atención al detalle impresionante. Perfecto para ocasiones especiales.</p>
-        <div class="t-author"><div class="t-avatar">RS</div><div><strong>Roberto Sánchez</strong><span>Comensal frecuente</span></div></div>
+        <p>Un lugar sencillo pero con mucho sabor. Los chiles en nogada en temporada son espectaculares.</p>
+        <div class="t-author"><div class="t-avatar">RS</div><div><strong>Roberto Sánchez</strong><span>Cliente habitual</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ubicacion" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Ubicación</span>
+      <h2>Visítanos en Coyoacán</h2>
+      <p>A dos cuadras del Museo Frida Kahlo, en el corazón de la Colonia Del Carmen.</p>
+    </div>
+    <div class="location-wrap reveal">
+      <div class="map-card">
+        <iframe src="https://www.google.com/maps?q=G%C3%B3mez+Far%C3%ADas+117,+Del+Carmen,+Coyoac%C3%A1n,+CDMX&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Ubicación de Fonda La Talavera"></iframe>
+      </div>
+      <div class="reviews-card">
+        <div class="rating-row">
+          <div class="rating-badge">
+            <div class="num">3.8</div>
+            <div class="stars">★★★★</div>
+          </div>
+          <div class="rating-meta">
+            <strong>Reseñas en TripAdvisor</strong>
+            <span>~24 reseñas · Fonda tradicional</span>
+          </div>
+        </div>
+        <div class="review-highlight">
+          <p>"Un lugar auténtico y sin pretensiones, con excelente relación calidad-precio. La comida corrida destaca por su sazón casero, y platillos como el pozole blanco y el mole poblano son de los favoritos de los comensales."</p>
+          <span>— Resumen de reseñas verificadas en línea</span>
+        </div>
+        <ul class="addr-list">
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Gómez Farías 117-C, Col. Del Carmen, Coyoacán, CDMX</li>
+          <li><svg class="icon"><use href="#ic-clock"/></svg> Comida corrida de lunes a sábado · horario en Google Maps</li>
+        </ul>
+        <a href="https://www.google.com/maps?q=G%C3%B3mez+Far%C3%ADas+117,+Del+Carmen,+Coyoac%C3%A1n,+CDMX" target="_blank" rel="noopener" class="gmaps-link">Ver en Google Maps <svg class="icon"><use href="#ic-arrow"/></svg></a>
       </div>
     </div>
   </div>
@@ -386,11 +444,11 @@
   <div class="cta-bg"></div>
   <div class="container">
     <div class="cta-inner reveal">
-      <h2>Reserva tu mesa hoy</h2>
-      <p>Vive una experiencia gastronómica que no olvidarás.</p>
+      <h2>Ven a comer con nosotros</h2>
+      <p>Cocina casera, buen precio y el trato de una fonda de barrio, a dos cuadras del Museo Frida Kahlo.</p>
       <div class="cta-actions">
-        <a href="tel:+34912345678" class="btn btn-primary"><svg class="icon"><use href="#ic-phone"/></svg> Llamar Ahora</a>
-        <a href="https://wa.me/34912345678" class="btn btn-ghost"><svg class="icon"><use href="#ic-wa"/></svg> WhatsApp</a>
+        <a href="https://www.google.com/maps?q=G%C3%B3mez+Far%C3%ADas+117,+Del+Carmen,+Coyoac%C3%A1n,+CDMX" target="_blank" rel="noopener" class="btn btn-primary"><svg class="icon"><use href="#ic-pin"/></svg> Cómo Llegar</a>
+        <a href="#menu" class="btn btn-ghost"><svg class="icon"><use href="#ic-fork"/></svg> Ver Menú</a>
       </div>
     </div>
   </div>
@@ -400,12 +458,12 @@
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-fork"/></svg></div>Sabor & Aroma</div>
-        <p>Restaurante premium donde el gusto es un arte. Cocina de autor desde 2014.</p>
+        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-fork"/></svg></div>Fonda La Talavera</div>
+        <p>Cocina mexicana de barrio, con sazón casero desde 2010. El sabor de siempre, en Coyoacán.</p>
         <div class="social-row">
           <a href="#"><svg class="icon"><use href="#ic-fb"/></svg></a>
           <a href="#"><svg class="icon"><use href="#ic-ig"/></svg></a>
-          <a href="https://wa.me/34912345678"><svg class="icon"><use href="#ic-wa"/></svg></a>
+          <a href="https://www.google.com/maps?q=G%C3%B3mez+Far%C3%ADas+117,+Del+Carmen,+Coyoac%C3%A1n,+CDMX" target="_blank" rel="noopener"><svg class="icon"><use href="#ic-pin"/></svg></a>
         </div>
       </div>
       <div>
@@ -413,32 +471,31 @@
         <ul>
           <li><a href="#menu">Menú</a></li>
           <li><a href="#galeria">Galería</a></li>
-          <li><a href="#horarios">Horarios</a></li>
+          <li><a href="#ubicacion">Ubicación</a></li>
           <li><a href="#testimonios">Testimonios</a></li>
         </ul>
       </div>
       <div>
         <h4>Horarios</h4>
         <ul>
-          <li>Lun - Jue: 13:00 - 23:00</li>
-          <li>Vie - Sáb: 13:00 - 23:30</li>
-          <li>Domingo: 13:00 - 16:00</li>
+          <li>Comida corrida: Lun - Sáb</li>
+          <li>A la carta: todo el día</li>
+          <li>Horario exacto en Google Maps</li>
         </ul>
       </div>
       <div>
         <h4>Contacto</h4>
         <ul class="footer-contact">
-          <li><svg class="icon"><use href="#ic-pin"/></svg> Calle Gastronómica 123, Centro</li>
-          <li><svg class="icon"><use href="#ic-phone"/></svg> +34 912 345 678</li>
-          <li><svg class="icon"><use href="#ic-mail"/></svg> reservas@saboraroma.com</li>
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Gómez Farías 117-C, Del Carmen, Coyoacán, CDMX</li>
+          <li><svg class="icon"><use href="#ic-mail"/></svg> contacto@fondalatalavera.mx</li>
         </ul>
       </div>
     </div>
-    <div class="footer-bottom">© 2026 Sabor & Aroma · Donde el gusto es un arte</div>
+    <div class="footer-bottom">© 2026 Fonda La Talavera · Cocina mexicana de barrio</div>
   </div>
 </footer>
 
-<a href="https://wa.me/34912345678" class="wa-fab" aria-label="WhatsApp"><svg class="icon" style="width:28px;height:28px"><use href="#ic-wa"/></svg></a>
+<a href="https://www.google.com/maps?q=G%C3%B3mez+Far%C3%ADas+117,+Del+Carmen,+Coyoac%C3%A1n,+CDMX" target="_blank" rel="noopener" class="wa-fab" aria-label="Cómo llegar" style="background:var(--copper);animation:none;box-shadow:0 10px 30px rgba(193,127,62,.5)"><svg class="icon" style="width:26px;height:26px"><use href="#ic-pin"/></svg></a>
 
 <script>
   const header = document.getElementById('header');
