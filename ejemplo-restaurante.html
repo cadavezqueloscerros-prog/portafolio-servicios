@@ -1,501 +1,450 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Restaurante Sabor & Aroma | Cocina Premium</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabor & Aroma | Restaurante de Cocina Premium</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --copper:#C17F3E;
+    --copper-light:#E0A968;
+    --brown:#2C1810;
+    --brown-2:#3A2317;
+    --cream:#FBF6EE;
+    --ink:#26170F;
+    --muted:#7A6a5c;
+    --white:#ffffff;
+    --radius:16px;
+    --shadow-md:0 20px 50px rgba(44,24,16,.14);
+    --shadow-lg:0 30px 70px rgba(44,24,16,.2);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Lato',sans-serif;color:var(--ink);background:var(--white);line-height:1.7;overflow-x:hidden;}
+  h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;letter-spacing:.005em;}
+  img{display:block;max-width:100%;}
+  a{color:inherit;}
+  .container{max-width:1200px;margin:0 auto;padding:0 24px;}
+  .icon{width:1em;height:1em;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;vertical-align:-0.15em;}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-        }
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
 
-        nav {
-            background: rgba(26, 26, 26, 0.95);
-            padding: 1.5rem 5%;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
+  /* NAV */
+  header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(251,246,238,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(44,24,16,.08);transition:box-shadow .3s;}
+  header.scrolled{box-shadow:0 6px 26px rgba(44,24,16,.1);}
+  nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1200px;margin:0 auto;}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Playfair Display',serif;font-weight:700;font-size:1.3rem;letter-spacing:.02em;color:var(--brown);}
+  .logo-badge{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--copper),#9a5f28);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;}
+  .nav-links{display:flex;align-items:center;gap:2.3rem;list-style:none;}
+  .nav-links a{text-decoration:none;color:var(--ink);font-weight:500;font-size:.94rem;position:relative;padding:4px 0;}
+  .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:2px;background:var(--copper);transition:width .25s;}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{background:linear-gradient(135deg,var(--copper),#9a5f28);color:#fff;padding:.75rem 1.6rem;border-radius:50px;text-decoration:none;font-weight:600;font-size:.9rem;box-shadow:0 10px 24px rgba(193,127,62,.3);transition:transform .25s, box-shadow .25s;white-space:nowrap;}
+  .nav-cta:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(193,127,62,.4);}
+  .burger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--brown);}
 
-        nav .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-        }
+  /* HERO */
+  .hero{position:relative;min-height:94vh;display:flex;align-items:center;padding:140px 0 80px;overflow:hidden;}
+  .hero-bg{position:absolute;inset:0;background-image:linear-gradient(110deg, rgba(20,11,6,.9) 15%, rgba(20,11,6,.55) 55%, rgba(20,11,6,.3) 100%), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=80&w=2000&auto=format&fit=crop');background-size:cover;background-position:center;}
+  .hero-content{position:relative;z-index:2;max-width:660px;color:#fff;}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--copper-light);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:1.6rem;}
+  .eyebrow::before{content:'';width:30px;height:1px;background:var(--copper-light);}
+  .hero h1{font-size:3.6rem;line-height:1.12;margin-bottom:1.4rem;}
+  .hero h1 em{font-style:italic;color:var(--copper-light);}
+  .hero p{font-size:1.15rem;opacity:.92;margin-bottom:2.3rem;max-width:500px;}
+  .hero-actions{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:1rem 2rem;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;border:none;cursor:pointer;transition:transform .25s, box-shadow .25s;}
+  .btn-primary{background:linear-gradient(135deg,var(--copper),#9a5f28);color:#fff;box-shadow:0 14px 30px rgba(193,127,62,.4);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 38px rgba(193,127,62,.5);}
+  .btn-ghost{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.45);backdrop-filter:blur(6px);}
+  .btn-ghost:hover{background:rgba(255,255,255,.2);transform:translateY(-3px);}
+  .trust-row{display:flex;gap:2.2rem;flex-wrap:wrap;}
+  .trust-item{display:flex;align-items:center;gap:10px;font-size:.88rem;opacity:.9;}
+  .trust-stars{color:var(--copper-light);letter-spacing:2px;}
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
+  /* STATS */
+  .stats{background:var(--brown);padding:0;}
+  .stats-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat{padding:2.7rem 1rem;text-align:center;color:#fff;border-right:1px solid rgba(255,255,255,.1);}
+  .stat:last-child{border-right:none;}
+  .stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--copper-light);}
+  .stat-label{font-size:.83rem;opacity:.8;margin-top:.4rem;}
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 500;
-        }
+  section{padding:6.5rem 0;}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 3.6rem;}
+  .kicker{color:var(--copper);font-weight:700;text-transform:uppercase;letter-spacing:.14em;font-size:.8rem;margin-bottom:.8rem;display:block;}
+  .section-head h2{font-size:2.6rem;margin-bottom:1rem;color:var(--brown);}
+  .section-head p{color:var(--muted);font-size:1.05rem;}
 
-        nav a:hover {
-            color: #D4A574;
-        }
+  /* ABOUT */
+  .about{background:var(--cream);}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+  .about-media{position:relative;}
+  .about-media img{border-radius:var(--radius);box-shadow:var(--shadow-lg);width:100%;height:460px;object-fit:cover;}
+  .about-badge{position:absolute;bottom:-24px;left:-24px;background:#fff;border-radius:14px;box-shadow:var(--shadow-md);padding:1.2rem 1.6rem;display:flex;align-items:center;gap:12px;}
+  .about-badge .icon-wrap{width:46px;height:46px;border-radius:12px;background:var(--copper);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+  .about-badge strong{display:block;font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--brown);}
+  .about-badge span{font-size:.82rem;color:var(--muted);}
+  .about-text h2{font-size:2.3rem;margin-bottom:1.2rem;color:var(--brown);}
+  .about-text p{color:var(--muted);margin-bottom:1.6rem;font-size:1.03rem;}
+  .check-list{list-style:none;display:grid;gap:1rem;}
+  .check-list li{display:flex;align-items:center;gap:12px;font-weight:500;color:var(--ink);}
+  .check-list .icon-check{width:26px;height:26px;border-radius:50%;background:var(--copper);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+  .check-list .icon-check svg{width:14px;height:14px;}
 
-        .hero {
-            background: linear-gradient(135deg, #2C1810 0%, #3D2817 100%);
-            color: white;
-            padding: 8rem 5%;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+  /* MENU */
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+  .menu-card{background:#fff;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);transition:transform .35s, box-shadow .35s;border:1px solid rgba(44,24,16,.06);}
+  .menu-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);}
+  .menu-media{height:190px;overflow:hidden;position:relative;}
+  .menu-media img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .menu-card:hover .menu-media img{transform:scale(1.08);}
+  .menu-body{padding:1.8rem 1.6rem;}
+  .menu-body .row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.6rem;gap:8px;}
+  .menu-body h3{font-size:1.15rem;color:var(--brown);}
+  .menu-price{color:var(--copper);font-weight:700;font-family:'Playfair Display',serif;font-size:1.15rem;white-space:nowrap;}
+  .menu-body p{color:var(--muted);font-size:.92rem;}
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(212, 165, 116, 0.05) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: move 20s linear infinite;
-        }
+  /* GALLERY */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:180px;gap:14px;}
+  .gallery a{position:relative;overflow:hidden;border-radius:12px;display:block;}
+  .gallery img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .gallery a:hover img{transform:scale(1.1);}
+  .gallery a::after{content:'';position:absolute;inset:0;background:linear-gradient(to top, rgba(20,11,6,.75), transparent 55%);opacity:0;transition:opacity .3s;}
+  .gallery a:hover::after{opacity:1;}
+  .gallery-label{position:absolute;bottom:14px;left:16px;font-weight:600;font-size:.92rem;color:#fff;opacity:0;transform:translateY(10px);transition:all .3s;z-index:2;}
+  .gallery a:hover .gallery-label{opacity:1;transform:translateY(0);}
+  .g-tall{grid-row:span 2;}
 
-        @keyframes move {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
+  /* HOURS */
+  .hours-section{background:linear-gradient(160deg,var(--brown),var(--brown-2));border-radius:24px;padding:3.5rem;color:#fff;position:relative;overflow:hidden;}
+  .hours-section::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 85% 20%, rgba(193,127,62,.18), transparent 45%);}
+  .hours-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-top:2.2rem;position:relative;z-index:1;}
+  .hour-item{text-align:center;padding:1.4rem 1rem;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);}
+  .hour-item h4{font-family:'Playfair Display',serif;color:var(--copper-light);margin-bottom:.6rem;font-size:1.05rem;}
+  .hour-item p{font-size:.92rem;opacity:.85;margin:.15rem 0;}
+  .hours-section .section-head{color:#fff;position:relative;z-index:1;text-align:left;max-width:none;margin-bottom:0;}
+  .hours-section .kicker{color:var(--copper-light);}
+  .hours-section h2{color:#fff;}
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
+  /* TESTIMONIALS */
+  .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+  .t-card{background:#fff;border-radius:var(--radius);padding:2.1rem;box-shadow:var(--shadow-md);border:1px solid rgba(44,24,16,.06);position:relative;}
+  .t-quote{font-size:2.8rem;color:var(--copper);opacity:.2;font-family:'Playfair Display',serif;line-height:0;position:absolute;top:1.6rem;right:1.8rem;}
+  .t-stars{color:var(--copper);margin-bottom:1rem;letter-spacing:2px;}
+  .t-card p{color:var(--ink);margin-bottom:1.5rem;font-size:.98rem;}
+  .t-author{display:flex;align-items:center;gap:12px;}
+  .t-avatar{width:42px;height:42px;border-radius:50%;background:var(--cream);color:var(--brown);display:flex;align-items:center;justify-content:center;font-weight:700;font-family:'Playfair Display',serif;}
+  .t-author strong{display:block;font-size:.92rem;color:var(--brown);}
+  .t-author span{font-size:.8rem;color:var(--muted);}
 
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
+  /* CTA BANNER */
+  .cta-banner{position:relative;padding:6rem 0;overflow:hidden;}
+  .cta-bg{position:absolute;inset:0;background-image:linear-gradient(120deg, rgba(20,11,6,.93), rgba(58,35,23,.85)), url('https://images.unsplash.com/photo-1574966739987-65e38db0f7ce?fm=jpg&q=80&w=1800&auto=format&fit=crop');background-size:cover;background-position:center;}
+  .cta-inner{position:relative;z-index:2;text-align:center;color:#fff;max-width:640px;margin:0 auto;}
+  .cta-inner h2{font-size:2.5rem;margin-bottom:1rem;}
+  .cta-inner p{opacity:.9;margin-bottom:2.1rem;font-size:1.08rem;}
+  .cta-actions{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
 
-        .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            font-style: italic;
-        }
+  /* FOOTER */
+  footer{background:var(--brown);color:rgba(255,255,255,.75);padding:4.5rem 0 0;}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:2.5rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.08);}
+  .footer-brand .logo{color:#fff;margin-bottom:1rem;}
+  .footer-brand p{font-size:.92rem;color:rgba(255,255,255,.6);max-width:280px;}
+  .social-row{display:flex;gap:10px;margin-top:1.4rem;}
+  .social-row a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;text-decoration:none;transition:background .25s;}
+  .social-row a:hover{background:var(--copper);}
+  footer h4{color:#fff;font-family:'Playfair Display',serif;font-size:1.05rem;margin-bottom:1.3rem;}
+  footer ul{list-style:none;}
+  footer ul li{margin-bottom:.85rem;}
+  footer ul a{text-decoration:none;color:rgba(255,255,255,.65);font-size:.92rem;transition:color .2s;}
+  footer ul a:hover{color:var(--copper-light);}
+  .footer-contact li{display:flex;align-items:flex-start;gap:10px;font-size:.9rem;color:rgba(255,255,255,.7);}
+  .footer-bottom{padding:1.6rem 0;text-align:center;font-size:.85rem;color:rgba(255,255,255,.4);}
 
-        .btn {
-            display: inline-block;
-            padding: 1rem 2.5rem;
-            background: #D4A574;
-            color: #2C1810;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            transition: all 0.3s;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            letter-spacing: 1px;
-        }
+  .wa-fab{position:fixed;bottom:26px;right:26px;width:60px;height:60px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 30px rgba(37,211,102,.5);z-index:150;text-decoration:none;animation:pulse 2.4s infinite;}
+  @keyframes pulse{0%{box-shadow:0 10px 30px rgba(37,211,102,.5);}50%{box-shadow:0 10px 30px rgba(37,211,102,.5),0 0 0 12px rgba(37,211,102,.12);}100%{box-shadow:0 10px 30px rgba(37,211,102,.5);}}
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px rgba(212, 165, 116, 0.4);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 5%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            letter-spacing: 1px;
-            position: relative;
-            color: #2C1810;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 3px;
-            background: #D4A574;
-            margin: 1rem auto 0;
-        }
-
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .menu-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .menu-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(212, 165, 116, 0.3);
-        }
-
-        .menu-icon {
-            background: linear-gradient(135deg, #D4A574 0%, #a67c52 100%);
-            color: white;
-            padding: 2rem;
-            font-size: 3rem;
-            text-align: center;
-        }
-
-        .menu-content {
-            padding: 2rem;
-        }
-
-        .menu-content h3 {
-            color: #2C1810;
-            margin-bottom: 0.5rem;
-            font-size: 1.3rem;
-        }
-
-        .menu-content .price {
-            color: #D4A574;
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-        }
-
-        .menu-content p {
-            color: #666;
-            line-height: 1.8;
-            font-size: 0.95rem;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .gallery-item {
-            background: linear-gradient(135deg, #D4A574 0%, #a67c52 100%);
-            height: 280px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-        }
-
-        .gallery-item::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0);
-            transition: background 0.3s;
-        }
-
-        .gallery-item:hover::after {
-            background: rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-label {
-            position: relative;
-            z-index: 1;
-            text-align: center;
-            color: white;
-            font-weight: 600;
-        }
-
-        .hours-section {
-            background: #f9f9f9;
-            padding: 3rem;
-            border-radius: 10px;
-            margin-bottom: 4rem;
-            border-left: 4px solid #D4A574;
-        }
-
-        .hours-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .hour-item {
-            text-align: center;
-        }
-
-        .hour-item h4 {
-            color: #2C1810;
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .hour-item p {
-            color: #D4A574;
-            font-weight: 600;
-        }
-
-        .testimonials {
-            background: #f9f9f9;
-            padding: 4rem 5%;
-        }
-
-        .testimonial {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border-left: 4px solid #D4A574;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-
-        .stars {
-            color: #D4A574;
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            color: #2C1810;
-            margin-top: 1rem;
-        }
-
-        .reserve-section {
-            background: linear-gradient(135deg, #2C1810 0%, #3D2817 100%);
-            color: white;
-            padding: 4rem 5%;
-            text-align: center;
-        }
-
-        .reserve-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            letter-spacing: 1px;
-        }
-
-        .reserve-section p {
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .footer {
-            background: #0a0a0a;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-        }
-    </style>
+  @media (max-width:980px){
+    .about-grid,.menu-grid,.testimonials-grid{grid-template-columns:1fr;}
+    .stats-inner{grid-template-columns:repeat(2,1fr);}
+    .stat{border-right:none;border-bottom:1px solid rgba(255,255,255,.1);}
+    .footer-grid{grid-template-columns:1fr 1fr;}
+    .nav-links{display:none;}
+    .burger{display:block;}
+    .hero h1{font-size:2.4rem;}
+    .gallery{grid-template-columns:repeat(2,1fr);}
+    .g-tall{grid-row:span 1;}
+    .hours-grid{grid-template-columns:repeat(2,1fr);}
+    .hours-section{padding:2.2rem;}
+    .about-badge{position:static;margin-top:1rem;}
+  }
+</style>
 </head>
 <body>
-    <nav>
-        <div class="logo">🍽️ SABOR & AROMA</div>
+
+<svg width="0" height="0" style="position:absolute">
+  <symbol id="ic-fork" viewBox="0 0 24 24"><path d="M3 2v7c0 1.1.9 2 2 2h1v11M6 2v9M9 2v9M15 2c-1.7 0-3 2.7-3 6s1.3 6 3 6v9M20.5 2c-.8 3-1 5-1 8 0 2 1 3 2.5 3v-11Z"/></symbol>
+  <symbol id="ic-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="ic-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.34 1.79.66 2.63a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.45-1.23a2 2 0 0 1 2.11-.45c.84.32 1.73.54 2.63.66A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="ic-calendar" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="ic-wine" viewBox="0 0 24 24"><path d="M8 22h8M12 15v7M7 2h10c0 5-1.5 9-5 9s-5-4-5-9Z"/></symbol>
+  <symbol id="ic-pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="ic-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="22 6 12 13 2 6"/></symbol>
+  <symbol id="ic-chef" viewBox="0 0 24 24"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></symbol>
+  <symbol id="ic-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="ic-wa" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M17.6 6.3A8.4 8.4 0 0 0 3.6 16.3L2 22l5.8-1.5A8.4 8.4 0 1 0 17.6 6.3ZM12 19.4a7 7 0 0 1-3.6-1l-.3-.2-2.7.7.7-2.6-.2-.3a7 7 0 1 1 6.1 3.4Zm3.9-5.2c-.2-.1-1.2-.6-1.4-.7-.2-.1-.3-.1-.5.1s-.6.7-.7.8-.3.2-.5.1a5.7 5.7 0 0 1-2.8-2.5c-.2-.4.2-.4.6-1.2.1-.1 0-.3 0-.4s-.5-1.2-.7-1.6-.4-.4-.5-.4h-.5c-.2 0-.4.1-.6.3a1.9 1.9 0 0 0-.6 1.4c0 .8.6 1.6.7 1.8.1.1 1.2 1.9 3 2.6 1.7.7 1.7.5 2 .4a1.7 1.7 0 0 0 1.1-.8c.1-.3.1-.5.1-.6s-.2-.1-.4-.2Z"/></symbol>
+  <symbol id="ic-fb" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M13.5 21v-7.6h2.6l.4-3H13.5V8.3c0-.9.2-1.5 1.5-1.5h1.6V4.1C16.3 4 15.3 4 14.2 4c-2.4 0-4 1.5-4 4.1v2.3H7.6v3h2.6V21Z"/></symbol>
+  <symbol id="ic-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></symbol>
+</svg>
+
+<header id="header">
+  <nav>
+    <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-fork"/></svg></div>Sabor & Aroma</div>
+    <ul class="nav-links">
+      <li><a href="#menu">Menú</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#horarios">Horarios</a></li>
+      <li><a href="#testimonios">Testimonios</a></li>
+    </ul>
+    <a href="#contacto" class="nav-cta">Reservar Mesa</a>
+    <button class="burger">☰</button>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="eyebrow">Cocina de Autor</span>
+      <h1>Una experiencia <em>gastronómica</em> inolvidable</h1>
+      <p>Sabores auténticos, ingredientes de temporada y una atmósfera pensada para momentos que se recuerdan.</p>
+      <div class="hero-actions">
+        <a href="#contacto" class="btn btn-primary"><svg class="icon"><use href="#ic-calendar"/></svg> Reservar Mesa</a>
+        <a href="tel:+34912345678" class="btn btn-ghost"><svg class="icon"><use href="#ic-phone"/></svg> +34 912 345 678</a>
+      </div>
+      <div class="trust-row">
+        <div class="trust-item"><span class="trust-stars">★★★★★</span> 4.8/5 (610 reseñas)</div>
+        <div class="trust-item">Cocina de autor desde 2014</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat"><div class="stat-num">50,000+</div><div class="stat-label">Comensales al año</div></div>
+    <div class="stat"><div class="stat-num">12</div><div class="stat-label">Años de trayectoria</div></div>
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Platos de autor</div></div>
+    <div class="stat"><div class="stat-num">4.8</div><div class="stat-label">Calificación promedio</div></div>
+  </div>
+</div>
+
+<section class="about" id="nosotros">
+  <div class="container about-grid">
+    <div class="about-media reveal">
+      <img src="https://images.unsplash.com/photo-1560130934-590b85fc08e7?fm=jpg&q=80&w=1200&auto=format&fit=crop" alt="Interior del restaurante Sabor & Aroma">
+      <div class="about-badge">
+        <div class="icon-wrap"><svg class="icon"><use href="#ic-chef"/></svg></div>
+        <div><strong>Chef Ejecutivo</strong><span>15 años de trayectoria</span></div>
+      </div>
+    </div>
+    <div class="about-text reveal">
+      <span class="kicker">Nuestra Cocina</span>
+      <h2>Ingredientes de temporada, técnica de autor</h2>
+      <p>En Sabor & Aroma creemos que cada plato debe contar una historia. Trabajamos con productores locales y técnicas de vanguardia para ofrecerte una experiencia gastronómica auténtica en cada visita.</p>
+      <ul class="check-list">
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Ingredientes frescos de productores locales</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Carta de vinos seleccionada por sommelier</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Ambiente elegante para toda ocasión</li>
+        <li><span class="icon-check"><svg><use href="#ic-check"/></svg></span> Menús personalizados para eventos privados</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Nuestro Menú</span>
+      <h2>Platos pensados para sorprender</h2>
+      <p>Una selección de nuestras especialidades, elaboradas con ingredientes de la más alta calidad.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card reveal">
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Ensaladas gourmet"></div>
+        <div class="menu-body">
+          <div class="row"><h3>Ensaladas Gourmet</h3><span class="menu-price">$18–24</span></div>
+          <p>Combinaciones frescas con ingredientes seleccionados y aderezos de autor.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1600663791817-d74f5196ba29?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Carnes premium"></div>
+        <div class="menu-body">
+          <div class="row"><h3>Carnes Premium</h3><span class="menu-price">$32–45</span></div>
+          <p>Cortes seleccionados cocinados a la perfección con técnicas tradicionales.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1499715217757-2aa48ed7e593?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Pescados del día"></div>
+        <div class="menu-body">
+          <div class="row"><h3>Pescados del Día</h3><span class="menu-price">$28–38</span></div>
+          <p>Mariscos y pescados frescos con hierbas aromáticas y cítricos.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1621494268492-d01b98eba7e4?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Pastas artesanales"></div>
+        <div class="menu-body">
+          <div class="row"><h3>Pastas Artesanales</h3><span class="menu-price">$22–32</span></div>
+          <p>Pastas hechas en casa con salsas de temporada e ingredientes premium.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1657566648148-061dc760eca6?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Entrantes de autor"></div>
+        <div class="menu-body">
+          <div class="row"><h3>Entrantes de Autor</h3><span class="menu-price">$16–26</span></div>
+          <p>Creaciones originales para despertar el paladar antes del plato fuerte.</p>
+        </div>
+      </div>
+      <div class="menu-card reveal">
+        <div class="menu-media"><img src="https://images.unsplash.com/photo-1519233991914-26a44330ccd7?fm=jpg&q=80&w=800&auto=format&fit=crop" alt="Postres caseros"></div>
+        <div class="menu-body">
+          <div class="row"><h3>Postres Caseros</h3><span class="menu-price">$12–18</span></div>
+          <p>Dulces elaborados diariamente por nuestro chef pastelero exclusivo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria" style="background:var(--cream)">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Galería</span>
+      <h2>Un vistazo a nuestra mesa</h2>
+    </div>
+    <div class="gallery reveal">
+      <a href="#" class="g-tall"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?fm=jpg&q=75&w=700&auto=format&fit=crop" alt="Ambiente del restaurante"><span class="gallery-label">Ambiente</span></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1514326640560-7d063ef2aed5?fm=jpg&q=75&w=700&auto=format&fit=crop" alt="Especialidades"><span class="gallery-label">Especialidades</span></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1600663791817-d74f5196ba29?fm=jpg&q=75&w=700&auto=format&fit=crop" alt="Carnes"><span class="gallery-label">Carnes</span></a>
+      <a href="#" class="g-tall"><img src="https://images.unsplash.com/photo-1519233991914-26a44330ccd7?fm=jpg&q=75&w=700&auto=format&fit=crop" alt="Postres"><span class="gallery-label">Postres</span></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1499715217757-2aa48ed7e593?fm=jpg&q=75&w=700&auto=format&fit=crop" alt="Mariscos"><span class="gallery-label">Mariscos</span></a>
+      <a href="#"><img src="https://images.unsplash.com/photo-1560130934-590b85fc08e7?fm=jpg&q=75&w=700&auto=format&fit=crop" alt="Sala"><span class="gallery-label">Nuestra Sala</span></a>
+    </div>
+  </div>
+</section>
+
+<section id="horarios">
+  <div class="container">
+    <div class="hours-section reveal">
+      <span class="kicker">Horarios</span>
+      <h2>¿Cuándo visitarnos?</h2>
+      <div class="hours-grid">
+        <div class="hour-item"><h4>Lunes a Jueves</h4><p>13:00 – 16:00</p><p>19:00 – 23:00</p></div>
+        <div class="hour-item"><h4>Viernes y Sábado</h4><p>13:00 – 16:00</p><p>19:00 – 23:30</p></div>
+        <div class="hour-item"><h4>Domingo</h4><p>13:00 – 16:00</p><p>Cerrado por la noche</p></div>
+        <div class="hour-item"><h4>Festivos</h4><p>13:00 – 22:00</p><p>Consultar disponibilidad</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonios">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="kicker">Testimonios</span>
+      <h2>Lo que dicen nuestros comensales</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="t-card reveal">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p>Una experiencia culinaria excepcional. La comida estaba exquisita y el servicio impecable. Volveremos sin duda.</p>
+        <div class="t-author"><div class="t-avatar">CM</div><div><strong>Carlos Martínez</strong><span>Comensal frecuente</span></div></div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p>El mejor restaurante de la ciudad. Cada plato es una obra de arte. Recomiendo reservar con anticipación.</p>
+        <div class="t-author"><div class="t-avatar">IG</div><div><strong>Isabel García</strong><span>Comensal frecuente</span></div></div>
+      </div>
+      <div class="t-card reveal">
+        <div class="t-quote">"</div>
+        <div class="t-stars">★★★★★</div>
+        <p>Ambiente elegante, comida de calidad premium y atención al detalle impresionante. Perfecto para ocasiones especiales.</p>
+        <div class="t-author"><div class="t-avatar">RS</div><div><strong>Roberto Sánchez</strong><span>Comensal frecuente</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-banner" id="contacto">
+  <div class="cta-bg"></div>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <h2>Reserva tu mesa hoy</h2>
+      <p>Vive una experiencia gastronómica que no olvidarás.</p>
+      <div class="cta-actions">
+        <a href="tel:+34912345678" class="btn btn-primary"><svg class="icon"><use href="#ic-phone"/></svg> Llamar Ahora</a>
+        <a href="https://wa.me/34912345678" class="btn btn-ghost"><svg class="icon"><use href="#ic-wa"/></svg> WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo"><div class="logo-badge"><svg class="icon" style="width:22px;height:22px"><use href="#ic-fork"/></svg></div>Sabor & Aroma</div>
+        <p>Restaurante premium donde el gusto es un arte. Cocina de autor desde 2014.</p>
+        <div class="social-row">
+          <a href="#"><svg class="icon"><use href="#ic-fb"/></svg></a>
+          <a href="#"><svg class="icon"><use href="#ic-ig"/></svg></a>
+          <a href="https://wa.me/34912345678"><svg class="icon"><use href="#ic-wa"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Enlaces</h4>
         <ul>
-            <li><a href="#menu">Menú</a></li>
-            <li><a href="#galeria">Galería</a></li>
-            <li><a href="#horarios">Horarios</a></li>
-            <li><a href="#contacto">Reservas</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#galeria">Galería</a></li>
+          <li><a href="#horarios">Horarios</a></li>
+          <li><a href="#testimonios">Testimonios</a></li>
         </ul>
-    </nav>
-
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Experiencia Gastronómica Única</h1>
-            <p>Sabores auténticos, atmósfera exclusiva, momentos inolvidables</p>
-            <button class="btn" onclick="alert('Reserva tu mesa:\n📞 +34 912 345 678\n📧 reservas@saboraroma.com')">Reservar Mesa</button>
-        </div>
-    </section>
-
-    <div class="container">
-        <h2 class="section-title" id="menu">Nuestro Menú</h2>
-        <div class="menu-grid">
-            <div class="menu-card">
-                <div class="menu-icon">🥗</div>
-                <div class="menu-content">
-                    <h3>Ensaladas Gourmet</h3>
-                    <div class="price">$18 - $24</div>
-                    <p>Combinaciones frescas con ingredientes seleccionados y aderezos caseros de autor.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-icon">🍖</div>
-                <div class="menu-content">
-                    <h3>Carnes Premium</h3>
-                    <div class="price">$32 - $45</div>
-                    <p>Cortes seleccionados cocinados a la perfección con técnicas tradicionales.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-icon">🐟</div>
-                <div class="menu-content">
-                    <h3>Pescados del Día</h3>
-                    <div class="price">$28 - $38</div>
-                    <p>Mariscos y pescados frescos preparados con hierbas aromáticas y limón.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-icon">🍝</div>
-                <div class="menu-content">
-                    <h3>Pastas Artesanales</h3>
-                    <div class="price">$22 - $32</div>
-                    <p>Pastas hechas en casa con salsas de temporada y ingredientes premium.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-icon">🧀</div>
-                <div class="menu-content">
-                    <h3>Tabla de Quesos</h3>
-                    <div class="price">$26 - $36</div>
-                    <p>Selección de quesos artesanales de productores locales e importados.</p>
-                </div>
-            </div>
-            <div class="menu-card">
-                <div class="menu-icon">🍰</div>
-                <div class="menu-content">
-                    <h3>Postres Caseros</h3>
-                    <div class="price">$12 - $18</div>
-                    <p>Dulces elaborados diariamente por nuestro chef pastelero exclusivo.</p>
-                </div>
-            </div>
-        </div>
+      </div>
+      <div>
+        <h4>Horarios</h4>
+        <ul>
+          <li>Lun - Jue: 13:00 - 23:00</li>
+          <li>Vie - Sáb: 13:00 - 23:30</li>
+          <li>Domingo: 13:00 - 16:00</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contacto</h4>
+        <ul class="footer-contact">
+          <li><svg class="icon"><use href="#ic-pin"/></svg> Calle Gastronómica 123, Centro</li>
+          <li><svg class="icon"><use href="#ic-phone"/></svg> +34 912 345 678</li>
+          <li><svg class="icon"><use href="#ic-mail"/></svg> reservas@saboraroma.com</li>
+        </ul>
+      </div>
     </div>
+    <div class="footer-bottom">© 2026 Sabor & Aroma · Donde el gusto es un arte</div>
+  </div>
+</footer>
 
-    <div class="container">
-        <h2 class="section-title" id="galeria">Galería de Platos</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <div class="gallery-label">Especialidades</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-label">Mariscos</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-label">Carnes</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-label">Postres</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-label">Bebidas</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-label">Ambiente</div>
-            </div>
-        </div>
-    </div>
+<a href="https://wa.me/34912345678" class="wa-fab" aria-label="WhatsApp"><svg class="icon" style="width:28px;height:28px"><use href="#ic-wa"/></svg></a>
 
-    <div class="container">
-        <div class="hours-section" id="horarios">
-            <h2 class="section-title">Nuestros Horarios</h2>
-            <div class="hours-grid">
-                <div class="hour-item">
-                    <h4>Lunes a Jueves</h4>
-                    <p>13:00 - 16:00</p>
-                    <p>19:00 - 23:00</p>
-                </div>
-                <div class="hour-item">
-                    <h4>Viernes y Sábado</h4>
-                    <p>13:00 - 16:00</p>
-                    <p>19:00 - 23:30</p>
-                </div>
-                <div class="hour-item">
-                    <h4>Domingo</h4>
-                    <p>13:00 - 16:00</p>
-                    <p>Cerrado por la noche</p>
-                </div>
-                <div class="hour-item">
-                    <h4>Festivos</h4>
-                    <p>Abierto 13:00 - 22:00</p>
-                    <p>Consultar disponibilidad</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <section class="testimonials">
-        <div class="container">
-            <h2 class="section-title">Lo que Dicen Nuestros Clientes</h2>
-            <div class="testimonial">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Una experiencia culinaria excepcional. La comida estaba exquisita y el servicio impecable. Definitivamente volveremos."</p>
-                <div class="testimonial-author">- Carlos Martínez</div>
-            </div>
-            <div class="testimonial">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"El mejor restaurante de la ciudad. Cada plato es una obra de arte. Recomiendo hacer reserva con anticipación."</p>
-                <div class="testimonial-author">- Isabel García</div>
-            </div>
-            <div class="testimonial">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <p>"Ambiente elegante, comida de calidad premium y atención al detalle impresionante. Perfecto para ocasiones especiales."</p>
-                <div class="testimonial-author">- Roberto Sánchez</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="reserve-section" id="contacto">
-        <h2>Reserva Tu Mesa Hoy</h2>
-        <p>Vive una experiencia gastronómica que no olvidarás</p>
-        <button class="btn" onclick="alert('📞 Teléfono: +34 912 345 678\n📧 Email: reservas@saboraroma.com\n📍 Ubicación: Calle Gastronómica 123, Centro')">Contactarnos</button>
-    </section>
-
-    <div class="footer">
-        <p>© 2026 Sabor & Aroma | Restaurante Premium | Donde el gusto es un arte 🍽️</p>
-    </div>
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 20));
+  const io = new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
 </body>
 </html>
