@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Veterinaria PetCare | Cuidado para tus Mascotas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        nav {
+            background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+            padding: 1.5rem 5%;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: white;
+            color: #2E7D32;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: transform 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 5%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #2E7D32;
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card .icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #2E7D32;
+            margin-bottom: 1rem;
+        }
+
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            text-align: center;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-member-image {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+
+        .team-member h3 {
+            color: #2E7D32;
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonials {
+            background: #f5f5f5;
+            padding: 4rem 5%;
+        }
+
+        .testimonial {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #2E7D32;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2E7D32 0%, #1976D2 100%);
+            color: white;
+            padding: 4rem 5%;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">🐾 PetCare Veterinaria</div>
+        <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#equipo">Equipo</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Bienvenido a PetCare Veterinaria</h1>
+        <p>Cuidado profesional y amoroso para tus mascotas</p>
+        <button class="btn" onclick="alert('Agenda tu cita: +34 123 456 789')">Agendar Cita</button>
+    </section>
+
+    <div class="container">
+        <h2 class="section-title" id="servicios">Nuestros Servicios</h2>
+        <div class="services">
+            <div class="service-card">
+                <div class="icon">💉</div>
+                <h3>Vacunación</h3>
+                <p>Protege a tu mascota con nuestros planes de vacunación completos y seguros.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🩺</div>
+                <h3>Consulta General</h3>
+                <p>Revisión completa de la salud de tu mascota con diagnósticos precisos.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🔬</div>
+                <h3>Análisis Clínicos</h3>
+                <p>Laboratorio equipado con tecnología de punta para análisis rápidos.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🦷</div>
+                <h3>Limpieza Dental</h3>
+                <p>Previene problemas bucales y mantén sonrisa saludable en tu mascota.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">✂️</div>
+                <h3>Aseo y Grooming</h3>
+                <p>Baño, corte y arreglo profesional para que brille tu mascota.</p>
+            </div>
+            <div class="service-card">
+                <div class="icon">🏥</div>
+                <h3>Cirugía</h3>
+                <p>Procedimientos quirúrgicos realizados con máximo cuidado y precisión.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title" id="equipo">Nuestro Equipo Médico</h2>
+        <div class="team">
+            <div class="team-member">
+                <div class="team-member-image">👩‍⚕️</div>
+                <h3>Dra. María López</h3>
+                <p>Veterinaria General</p>
+                <p style="color: #666; font-size: 0.9rem;">15 años de experiencia</p>
+            </div>
+            <div class="team-member">
+                <div class="team-member-image">👨‍⚕️</div>
+                <h3>Dr. Carlos García</h3>
+                <p>Cirujano Especialista</p>
+                <p style="color: #666; font-size: 0.9rem;">12 años de experiencia</p>
+            </div>
+            <div class="team-member">
+                <div class="team-member-image">👩‍⚕️</div>
+                <h3>Dra. Ana Rodríguez</h3>
+                <p>Especialista en Pequeños Animales</p>
+                <p style="color: #666; font-size: 0.9rem;">8 años de experiencia</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo que dicen nuestros clientes</h2>
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Excelente atención, mi gato se siente mucho mejor. Recomiendo 100%"</p>
+                <strong>- Pedro Martínez</strong>
+            </div>
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"El mejor veterinario de la ciudad. Profesionales y muy atentos."</p>
+                <strong>- Laura González</strong>
+            </div>
+            <div class="testimonial">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p>"Mi perro adora venir aquí. Las instalaciones son limpias y modernas."</p>
+                <strong>- Juan Ramírez</strong>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <h2>¿Tu mascota necesita atención?</h2>
+        <p style="font-size: 1.2rem; margin-bottom: 2rem;">Contactanos hoy y agenda tu cita</p>
+        <button class="btn" onclick="alert('📞 Llamar: +34 123 456 789\n📧 Email: contacto@petcare.com\n📍 Ubicación: Calle Principal 123')">Contactarnos</button>
+    </section>
+
+    <div class="footer">
+        <p>© 2026 PetCare Veterinaria | Cuidando mascotas con amor 🐾</p>
+    </div>
+</body>
+</html>

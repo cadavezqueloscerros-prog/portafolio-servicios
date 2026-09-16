@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio de Servicios Web | Soluciones Digitales para PyMEs</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        /* Navbar */
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.5rem 5%;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 5%;
+            text-align: center;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            animation: slideUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: slideUp 0.8s ease-out 0.4s both;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #667eea;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 5rem 5%;
+            background: white;
+        }
+
+        .portfolio .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .portfolio-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 280px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0);
+            transition: background 0.3s;
+        }
+
+        .portfolio-card:hover .card-image::after {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        .card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .card-content p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .card-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-link {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .card-link:hover {
+            color: #764ba2;
+            transform: translateX(5px);
+        }
+
+        /* Modal para ver ejemplos */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            max-width: 90%;
+            max-height: 85vh;
+            overflow: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-modal {
+            color: white;
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #667eea;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 85vh;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="container">
+            <div class="logo">💼 AI Automation Agency</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#portafolio">Portafolio</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <h1>Sitios Web Modernos para tu Negocio</h1>
+        <p>Soluciones digitales profesionales diseñadas para atraer clientes y crecer tu negocio</p>
+        <div class="cta-buttons">
+            <button class="btn btn-primary" onclick="document.getElementById('portafolio').scrollIntoView({behavior: 'smooth'})">
+                Ver Ejemplos
+            </button>
+            <a href="https://wa.me/1234567890" class="btn btn-secondary">Cotizar Ahora</a>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portafolio">
+        <div class="container">
+            <h2 class="section-title">Nuestros Servicios</h2>
+
+            <div class="portfolio-grid">
+                <!-- Veterinaria -->
+                <div class="portfolio-card" onclick="openModal('veterinaria')">
+                    <div class="card-image">🐾</div>
+                    <div class="card-content">
+                        <h3>Clínica Veterinaria</h3>
+                        <p>Sitio profesional para veterinarias con agenda de citas online, información de servicios y equipo médico.</p>
+                        <div class="card-features">
+                            <span class="tag">Citas Online</span>
+                            <span class="tag">Testimonios</span>
+                            <span class="tag">Servicios</span>
+                        </div>
+                        <a href="#" class="card-link">Ver Ejemplo →</a>
+                    </div>
+                </div>
+
+                <!-- Estética y Barbería -->
+                <div class="portfolio-card" onclick="openModal('estetica')">
+                    <div class="card-image">💇</div>
+                    <div class="card-content">
+                        <h3>Estética & Barbería</h3>
+                        <p>Diseño elegante para salones de belleza con galería de trabajos, promociones y reserva de citas automática.</p>
+                        <div class="card-features">
+                            <span class="tag">Galería</span>
+                            <span class="tag">Reservas</span>
+                            <span class="tag">Promociones</span>
+                        </div>
+                        <a href="#" class="card-link">Ver Ejemplo →</a>
+                    </div>
+                </div>
+
+                <!-- Restaurante -->
+                <div class="portfolio-card" onclick="openModal('restaurante')">
+                    <div class="card-image">🍽️</div>
+                    <div class="card-content">
+                        <h3>Restaurante</h3>
+                        <p>Sitio delicioso con menú interactivo, reservas online, ubicación y reseñas de clientes satisfechos.</p>
+                        <div class="card-features">
+                            <span class="tag">Menú Digital</span>
+                            <span class="tag">Reservas</span>
+                            <span class="tag">Delivery</span>
+                        </div>
+                        <a href="#" class="card-link">Ver Ejemplo →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <p><strong>🚀 Transforma tu Negocio con IA</strong></p>
+        <p>Sitios web modernos, automatización inteligente y resultados reales</p>
+        <p style="margin-top: 1.5rem; font-size: 0.9rem;">© 2026 AI Automation Agency | Soluciones Digitales para PyMEs</p>
+    </footer>
+
+    <!-- Modal para ver ejemplos -->
+    <div id="modal" class="modal">
+        <span class="close-modal" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="iframe-container">
+                <iframe id="modal-iframe" src=""></iframe>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(tipo) {
+            const modal = document.getElementById('modal');
+            const iframe = document.getElementById('modal-iframe');
+
+            // URLs de los ejemplos
+            const ejemplos = {
+                'veterinaria': 'ejemplo-veterinaria.html',
+                'estetica': 'ejemplo-estetica.html',
+                'restaurante': 'ejemplo-restaurante.html'
+            };
+
+            iframe.src = ejemplos[tipo];
+            modal.style.display = 'block';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
